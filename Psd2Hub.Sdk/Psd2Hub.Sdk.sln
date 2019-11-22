@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Psd2Hub.Sdk", "Psd2Hub.Sdk\Psd2Hub.Sdk.csproj", "{98897C56-3A37-4D00-B5ED-A85D11C2A622}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Psd2Hub.Sdk.Tests", "Psd2Hub.Sdk.Tests\Psd2Hub.Sdk.Tests.csproj", "{6AA8A708-6203-4415-9CA1-08B9C739633C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98897C56-3A37-4D00-B5ED-A85D11C2A622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98897C56-3A37-4D00-B5ED-A85D11C2A622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98897C56-3A37-4D00-B5ED-A85D11C2A622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98897C56-3A37-4D00-B5ED-A85D11C2A622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA8A708-6203-4415-9CA1-08B9C739633C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA8A708-6203-4415-9CA1-08B9C739633C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA8A708-6203-4415-9CA1-08B9C739633C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA8A708-6203-4415-9CA1-08B9C739633C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78ADA2EE-5356-4104-A529-1EED5012E880}
+	EndGlobalSection
+EndGlobal
