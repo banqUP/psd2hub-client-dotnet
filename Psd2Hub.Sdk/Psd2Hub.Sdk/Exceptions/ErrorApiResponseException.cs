@@ -1,13 +1,18 @@
-﻿namespace Psd2Hub.Sdk.Exceptions
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace Psd2Hub.Sdk.Exceptions
 {
     public class ErrorApiResponseException : ApiException
     {
-        public ErrorApiResponseException(ApiModels.Error error)
+        private readonly Dictionary<string, object> _data;
+
+        internal ErrorApiResponseException(ApiModels.Error error)
             : base(error.DisplayMessage)
         {
-            Details = error.Details;
+            _data["details"] = error.Details;
         }
 
-        public object Details { get; }
+        public override IDictionary Data => _data;
     }
 }

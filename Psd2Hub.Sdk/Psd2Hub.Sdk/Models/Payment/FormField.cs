@@ -1,8 +1,8 @@
-﻿namespace Psd2Hub.Sdk.Models.PaymentForm
+﻿namespace Psd2Hub.Sdk.Models.Payment
 {
-    public class Field
+    public class FormField
     {
-        internal Field(ApiModels.PaymentForm.Field apiModel)
+        internal FormField(ApiModels.Payment.FormField apiModel)
         {
             Label = apiModel.Label;
             Type = apiModel.Type;

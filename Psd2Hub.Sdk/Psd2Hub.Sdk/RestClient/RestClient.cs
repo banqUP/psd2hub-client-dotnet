@@ -1,23 +1,34 @@
 ﻿using RestSharp;
 using System.Threading.Tasks;
 
-namespace Psd2Hub.Sdk.ApiClient
+namespace Psd2Hub.Sdk.RestClient
 {
-    // internal
-    public class ApiClient : IApiClient
+    internal class RestClient : IRestClient
     {
         private readonly IResponseDeserializer _deserializer;
-        private readonly IRestClient _restClient;
+        private readonly RestSharp.IRestClient _restClient;
 
-        public ApiClient(IResponseDeserializer deserializer, IRestClient restClient)
+        private string _url;
+
+        public RestClient(IResponseDeserializer deserializer, RestSharp.IRestClient restClient)
         {
             _deserializer = deserializer;
             _restClient = restClient;
         }
 
+        public string SubscriptionKey { private get; set; }
+        public string Url 
+        { 
+            set 
+            { 
+                _url = value; 
+                _restClient.BaseUrl = new System.Uri(value); 
+            } 
+        }
+
         public Task<TResponse> Execute<TResponse>(string resource, Method method)
         {
-            return Execute<TResponse>(new RestRequest(resource, method));
+            return ExecuteAndDeserialize<TResponse>(new RestRequest(resource, method));
         }
 
         public Task<TResponse> Execute<TResponse, TRequest>(string resource, Method method, TRequest body)
@@ -28,17 +39,17 @@ namespace Psd2Hub.Sdk.ApiClient
                 request.AddJsonBody(body);
             }
 
-            return Execute<TResponse>(request);
+            return ExecuteAndDeserialize<TResponse>(request);
         }
 
         public Task ExecuteNoContent(string resource, Method method)
         {
-            return ExecuteNoContent(new RestRequest(resource, method));
+            return Execute(new RestRequest(resource, method));
         }
 
-        private async Task<TResponse> Execute<TResponse>(RestRequest request)
+        private async Task<TResponse> ExecuteAndDeserialize<TResponse>(RestRequest request)
         {
-            var response = await _restClient.ExecuteTaskAsync(request);
+            var response = await Execute(request);
 
             try
             {
@@ -57,8 +68,19 @@ namespace Psd2Hub.Sdk.ApiClient
             }
         }
 
-        private Task ExecuteNoContent(RestRequest request)
+        private Task<IRestResponse> Execute(RestRequest request)
         {
+            if (_url == null)
+            {
+                throw new System.InvalidOperationException(
+                    "Client base url has to be set before executing a request.");
+            }
+            if (SubscriptionKey == null)
+            {
+                throw new System.InvalidOperationException(
+                    "Client subscription key has to be set before executing a request.");
+            }
+
             return _restClient.ExecuteTaskAsync(request);
         }
 

@@ -1,4 +1,4 @@
-﻿using Psd2Hub.Sdk.ApiClient;
+﻿using Psd2Hub.Sdk.RestClient;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,30 +7,30 @@ namespace Psd2Hub.Sdk.Models.Bank
 {
     public class Bank
     {
-        private readonly IApiClient _apiClient;
+        private readonly IRestClient _restClient;
 
-        internal Bank(IApiClient apiClient, ApiModels.Bank.Bank apiModel)
+        internal Bank(IRestClient restClient, ApiModels.Bank.Bank apiModel)
         {
-            _apiClient = apiClient;
+            _restClient = restClient;
             Name = apiModel.Name;
             Swiftbic = apiModel.Swiftbic;
-            Links = new Links(apiModel.Links);
+            Links = new BankLinks(apiModel.Links);
         }
 
         public string Name { get; }
         public bool SupportsPis { get; }
         public string Swiftbic { get; }
-        public Links Links { get; }
+        public BankLinks Links { get; }
 
-        public async Task<PaymentForm.PaymentForm[]> GetPaymentForms()
+        public async Task<Payment.Form[]> GetPaymentForms()
         {
             if (!SupportsPis)
             {
                 throw new NotSupportedException($"Bank {Name} ({Swiftbic}) does not support PIS.");
             }
 
-            return (await _apiClient.Get<ApiModels.PaymentForm.PaymentForm[]>(Links.GetPaymentForms))
-                .Select(pf => new PaymentForm.PaymentForm(_apiClient, pf))
+            return (await _restClient.Get<ApiModels.Payment.Form[]>(Links.GetPaymentForms))
+                .Select(pf => new Payment.Form(_restClient, pf))
                 .ToArray();
         }
     }

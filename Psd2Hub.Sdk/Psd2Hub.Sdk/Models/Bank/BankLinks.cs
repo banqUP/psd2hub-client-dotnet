@@ -1,8 +1,8 @@
 ﻿namespace Psd2Hub.Sdk.Models.Bank
 {
-    public class Links
+    public class BankLinks
     {
-        internal Links(ApiModels.Bank.Links apiModel)
+        internal BankLinks(ApiModels.Bank.BankLinks apiModel)
         {
             GetPaymentForms = apiModel.GetPaymentForms;
         }

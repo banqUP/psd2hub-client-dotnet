@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Psd2Hub.Sdk.ApiModels.PaymentForm
+namespace Psd2Hub.Sdk.ApiModels.Payment
 {
-    // internal
-    public class Field
+    internal class FormField
     {
         [JsonProperty(PropertyName = "label", Required = Required.Always)]
         public string Label { get; set; }

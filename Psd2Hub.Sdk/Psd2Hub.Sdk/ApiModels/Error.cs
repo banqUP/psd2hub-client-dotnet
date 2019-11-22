@@ -2,7 +2,7 @@
 
 namespace Psd2Hub.Sdk.ApiModels
 {
-    public class Error
+    internal class Error
     {
         [JsonProperty(PropertyName = "details")]
         public object Details { get; set; }

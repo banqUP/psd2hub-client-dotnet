@@ -2,8 +2,7 @@
 
 namespace Psd2Hub.Sdk.ApiModels.Bank
 {
-    // internal
-    public class Bank
+    internal class Bank
     {
         [JsonProperty(PropertyName = "name", Required = Required.Always)]
         public string Name { get; set; }
@@ -12,6 +11,6 @@ namespace Psd2Hub.Sdk.ApiModels.Bank
         public string Swiftbic { get; set; }
 
         [JsonProperty(PropertyName = "_links", Required = Required.Always)]
-        public Links Links { get; set; }
+        public BankLinks Links { get; set; }
     }
 }

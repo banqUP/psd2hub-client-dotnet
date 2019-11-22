@@ -2,8 +2,7 @@
 
 namespace Psd2Hub.Sdk.ApiModels.Payment
 {
-    // internal
-    public class Links
+    internal class PaymentLinks
     {
         [JsonProperty(PropertyName = "self", Required = Required.Always)]
         public string Self { get; set; }

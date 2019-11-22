@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Psd2Hub.Sdk.ApiClient
+namespace Psd2Hub.Sdk.RestClient
 {
-    // internal
-    public class ResponseDeserializer : IResponseDeserializer
+    internal class ResponseDeserializer : IResponseDeserializer
     {
         public TResult Deserialize<TResult>(string value)
         {

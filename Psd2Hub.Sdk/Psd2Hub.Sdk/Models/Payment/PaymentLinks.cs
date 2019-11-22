@@ -1,8 +1,8 @@
 ﻿namespace Psd2Hub.Sdk.Models.Payment
 {
-    public class Links
+    public class PaymentLinks
     {
-        internal Links(ApiModels.Payment.Links apiModel)
+        internal PaymentLinks(ApiModels.Payment.PaymentLinks apiModel)
         {
             Self = apiModel.Self;
             Status = apiModel.Status;
