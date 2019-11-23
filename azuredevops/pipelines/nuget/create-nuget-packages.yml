@@ -10,7 +10,7 @@ pool:
 
 
 steps:
-  - template: ../../templates/nugets/create-nuget-packages.yml
+  - template: ../../templates/nuget/create-nuget-packages.yml
     parameters:
       projectsToPack:
         - name: 'Psd2Hub.Sdk'
