@@ -1,0 +1,17 @@
+name: 0.1.0
+
+trigger:
+  branches:
+    exclude:
+    - '*'
+
+pool:
+  name: PrivateAgent
+
+
+steps:
+  - template: ../../templates/nugets/create-nuget-packages.yml
+    parameters:
+      projectsToPack:
+        - name: 'Psd2Hub.Sdk'
+          pathToProject: 'Psd2Hub.Sdk\Psd2Hub.Sdk'

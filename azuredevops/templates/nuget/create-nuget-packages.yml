@@ -1,0 +1,9 @@
+parameters:
+    projectsToPack: []
+
+steps:
+- ${{ each project in parameters.projectsToPack }}:
+  - template: ../../templates/steps/create-nuget-package.yml
+    parameters:
+      pathToProject: ${{ project.pathToProject }}
+      projectName: ${{ project.name }}
