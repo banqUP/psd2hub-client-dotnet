@@ -10,7 +10,7 @@ namespace Psd2Hub.Sdk.Exceptions
         internal ErrorApiResponseException(ApiModels.Error error)
             : base(error.DisplayMessage)
         {
-            _data["details"] = error.Details;
+            _data = new Dictionary<string, object> { { "details", error.Details } };
         }
 
         public override IDictionary Data => _data;
