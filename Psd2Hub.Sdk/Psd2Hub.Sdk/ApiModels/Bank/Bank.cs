@@ -4,6 +4,9 @@ namespace Psd2Hub.Sdk.ApiModels.Bank
 {
     internal class Bank
     {
+        [JsonProperty(PropertyName = "logo")]
+        public byte[] Logo { get; set; }
+
         [JsonProperty(PropertyName = "name", Required = Required.Always)]
         public string Name { get; set; }
 
