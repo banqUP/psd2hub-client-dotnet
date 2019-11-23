@@ -1,5 +1,6 @@
 ﻿using Psd2Hub.Sdk.Extensions;
 using Psd2Hub.Sdk.Models.Bank;
+using Psd2Hub.Sdk.Models.Payment;
 using Psd2Hub.Sdk.RestClient;
 using System;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Psd2Hub.Sdk
     {
         private static readonly SimpleInjector.Container _container;
 
-        private const string _banksResource = "/api/bank";
+        private const string _banksResource = "/bank";
         
         private readonly IRestClient _restClient;
 
