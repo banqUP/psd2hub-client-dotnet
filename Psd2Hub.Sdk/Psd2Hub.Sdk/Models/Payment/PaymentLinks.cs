@@ -2,6 +2,10 @@
 {
     public class PaymentLinks
     {
+        public PaymentLinks()
+        {
+        }
+
         internal PaymentLinks(ApiModels.Payment.PaymentLinks apiModel)
         {
             Self = apiModel.Self;
@@ -9,8 +13,8 @@
             Cancel = apiModel.Cancel;
         }
 
-        public string Self { get; }
-        public string Status { get; }
-        public string Cancel { get; }
+        public string Self { get; set; }
+        public string Status { get; set; }
+        public string Cancel { get; set; }
     }
 }

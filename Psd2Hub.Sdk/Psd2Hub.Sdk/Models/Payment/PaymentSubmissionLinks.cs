@@ -2,13 +2,17 @@
 {
     public class PaymentSubmissionLinks
     {
+        public PaymentSubmissionLinks()
+        {
+        }
+
         internal PaymentSubmissionLinks(ApiModels.Payment.PaymentSubmissionLinks apiModel)
         {
             Payment = apiModel.Payment;
             Sca = apiModel.Sca;
         }
 
-        public string Payment { get; }
-        public string Sca { get; }
+        public string Payment { get; set; }
+        public string Sca { get; set; }
     }
 }

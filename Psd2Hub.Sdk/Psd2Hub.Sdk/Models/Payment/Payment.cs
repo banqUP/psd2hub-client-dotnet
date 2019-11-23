@@ -8,6 +8,10 @@ namespace Psd2Hub.Sdk.Models.Payment
     {
         private readonly IRestClient _restClient;
 
+        public Payment()
+        {
+        }
+
         internal Payment(IRestClient restClient, ApiModels.Payment.Payment apiModel)
         {
             _restClient = restClient;
@@ -16,9 +20,9 @@ namespace Psd2Hub.Sdk.Models.Payment
             Links = new PaymentLinks(apiModel.Links);
         }
 
-        public Guid Id { get; }
-        public string Status { get; }
-        public PaymentLinks Links { get; }
+        public Guid Id { get; set; }
+        public string Status { get; set; }
+        public PaymentLinks Links { get; set; }
 
         public Task Cancel()
         {

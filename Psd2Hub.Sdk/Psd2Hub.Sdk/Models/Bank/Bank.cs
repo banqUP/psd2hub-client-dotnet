@@ -8,6 +8,10 @@ namespace Psd2Hub.Sdk.Models.Bank
     {
         private readonly IRestClient _restClient;
 
+        public Bank()
+        {
+        }
+
         internal Bank(IRestClient restClient, ApiModels.Bank.Bank apiModel)
         {
             _restClient = restClient;
@@ -16,11 +20,11 @@ namespace Psd2Hub.Sdk.Models.Bank
             Links = new BankLinks(apiModel.Links);
         }
 
-        public string Name { get; }
-        public string Swiftbic { get; }
-        public BankLinks Links { get; }
+        public virtual string Name { get; set; }
+        public virtual string Swiftbic { get; set; }
+        public virtual BankLinks Links { get; set; }
 
-        public async Task<Payment.Form[]> GetPaymentForms()
+        public virtual async Task<Payment.Form[]> GetPaymentForms()
         {
             return (await _restClient.Get<ApiModels.Payment.Form[]>(Links.GetPaymentForms))
                 .Select(pf => new Payment.Form(_restClient, pf))

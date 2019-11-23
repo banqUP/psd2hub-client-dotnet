@@ -10,6 +10,10 @@ namespace Psd2Hub.Sdk.Models.Payment
     {
         private readonly IRestClient _restClient;
 
+        public Form()
+        {
+        }
+
         internal Form(IRestClient restClient, ApiModels.Payment.Form apiModel)
         {
             _restClient = restClient;
@@ -18,9 +22,9 @@ namespace Psd2Hub.Sdk.Models.Payment
             Fields = apiModel.Fields.ToDictionary(kvp => kvp.Key, kvp => new FormField(kvp.Value));
         }
 
-        public PaymentType PaymentType { get; }
-        public Dictionary<string, FormField> Fields { get; }
-        public FormLinks Links { get; }
+        public PaymentType PaymentType { get; set; }
+        public Dictionary<string, FormField> Fields { get; set; }
+        public FormLinks Links { get; set; }
 
         public async Task<PaymentSubmission> MakePayment(IDictionary<string, object> fields)
         {

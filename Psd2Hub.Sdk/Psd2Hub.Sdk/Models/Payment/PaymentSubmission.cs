@@ -7,7 +7,11 @@ namespace Psd2Hub.Sdk.Models.Payment
     public class PaymentSubmission
     {
         private readonly IRestClient _restClient;
-      
+     
+        public PaymentSubmission()
+        {
+        }
+
         internal PaymentSubmission(IRestClient restClient, ApiModels.Payment.PaymentSubmission apiModel)
         {
             _restClient = restClient;
@@ -15,8 +19,8 @@ namespace Psd2Hub.Sdk.Models.Payment
             PaymentId = apiModel.PaymentId;
         }
 
-        public Guid PaymentId { get; }
-        public PaymentSubmissionLinks Links { get; }
+        public Guid PaymentId { get; set; }
+        public PaymentSubmissionLinks Links { get; set; }
 
         public async Task<Payment> GetPayment()
         {
