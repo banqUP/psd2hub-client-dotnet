@@ -14,4 +14,4 @@ steps:
     parameters:
       projectsToPack:
         - name: 'Psd2Hub.Sdk'
-          pathToProject: 'Psd2Hub.Sdk\Psd2Hub.Sdk'
+          pathToProject: 'Psd2Hub.Sdk/Psd2Hub.Sdk'
