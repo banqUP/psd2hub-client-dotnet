@@ -13,7 +13,7 @@ namespace Psd2Hub.Sdk.Models.Payment
         internal Form(IRestClient restClient, ApiModels.Payment.Form apiModel)
         {
             _restClient = restClient;
-            PaymentType = Enum.Parse<PaymentType>(apiModel.PaymentType);
+            PaymentType = (PaymentType)Enum.Parse(typeof(PaymentType), apiModel.PaymentType);
             Links = new FormLinks(apiModel.Links);
             Fields = apiModel.Fields.ToDictionary(kvp => kvp.Key, kvp => new FormField(kvp.Value));
         }
