@@ -8,7 +8,7 @@
 
         internal FormLinks(ApiModels.Payment.FormLinks apiModel)
         {
-            MakePayment = apiModel.MakePayment;
+            MakePayment = apiModel.SubmitPayment;
         }
 
         public string MakePayment { get; set; }

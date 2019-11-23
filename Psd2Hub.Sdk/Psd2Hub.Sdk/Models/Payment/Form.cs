@@ -26,7 +26,7 @@ namespace Psd2Hub.Sdk.Models.Payment
         public Dictionary<string, FormField> Fields { get; set; }
         public FormLinks Links { get; set; }
 
-        public async Task<PaymentSubmission> MakePayment(IDictionary<string, object> fields)
+        public async Task<PaymentSubmission> SubmitPayment(IDictionary<string, object> fields)
         {
             if (fields == null)
             {
