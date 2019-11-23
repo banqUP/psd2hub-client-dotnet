@@ -16,17 +16,17 @@ namespace Psd2Hub.Sdk.Models.Bank
         {
             _restClient = restClient;
             Name = apiModel.Name;
-            Swiftbic = apiModel.Swiftbic;
+            Swift = apiModel.Swift;
             Links = new BankLinks(apiModel.Links);
         }
 
         public virtual string Name { get; set; }
-        public virtual string Swiftbic { get; set; }
+        public virtual string Swift { get; set; }
         public virtual BankLinks Links { get; set; }
 
         public virtual async Task<Payment.Form[]> GetPaymentForms()
         {
-            return (await _restClient.Get<ApiModels.Payment.Form[]>(Links.GetPaymentForms))
+            return (await _restClient.Get<ApiModels.Payment.Form[]>(Links.PaymentForms))
                 .Select(pf => new Payment.Form(_restClient, pf))
                 .ToArray();
         }

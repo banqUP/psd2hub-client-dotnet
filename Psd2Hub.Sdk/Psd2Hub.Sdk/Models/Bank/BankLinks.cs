@@ -8,9 +8,9 @@
 
         internal BankLinks(ApiModels.Bank.BankLinks apiModel)
         {
-            GetPaymentForms = apiModel.GetPaymentForms;
+            PaymentForms = apiModel.PaymentForms;
         }
 
-        public string GetPaymentForms { get; set; }
+        public string PaymentForms { get; set; }
     }
 }

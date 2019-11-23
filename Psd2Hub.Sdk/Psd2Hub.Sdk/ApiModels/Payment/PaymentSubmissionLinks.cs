@@ -7,7 +7,7 @@ namespace Psd2Hub.Sdk.ApiModels.Payment
         [JsonProperty(PropertyName = "sca", Required = Required.Always)]
         public string Sca { get; set; }
 
-        [JsonProperty(PropertyName = "payment", Required = Required.Always)]
+        [JsonProperty(PropertyName = "payment")]
         public string Payment { get; set; }
     }
 }

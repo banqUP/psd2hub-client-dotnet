@@ -33,15 +33,7 @@ namespace Psd2Hub.Sdk.Models.Payment
                 throw new ArgumentNullException(nameof(fields));
             }
 
-            // foreach v in fields czy się zgada z tymi co są w Fields, które mają required
-
-            if (Links.MakePayment == null)
-            {
-                throw new NotSupportedException($"Payment form {PaymentType} does not support making a payment.");
-            }
-
             var response = await _restClient.Post<ApiModels.Payment.PaymentSubmission, IDictionary<string, object>>(Links.MakePayment, fields);
-
             return new PaymentSubmission(_restClient, response);
         }
     }
