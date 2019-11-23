@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Psd2Hub.Sdk.Exceptions;
+using System;
 
 namespace Psd2Hub.Sdk.RestClient
 {
@@ -7,13 +8,14 @@ namespace Psd2Hub.Sdk.RestClient
     {
         public TResult Deserialize<TResult>(string value)
         {
-            var result = JsonConvert.DeserializeObject<TResult>(value);
-            if (result == null)
+            try
             {
-                throw new ResponseDeserializationException(value, typeof(TResult));
+                return JsonConvert.DeserializeObject<TResult>(value);
             }
-
-            return result;
+            catch (Exception e)
+            {
+                throw new ResponseDeserializationException(value, typeof(TResult), e);
+            }
         }
     }
 }

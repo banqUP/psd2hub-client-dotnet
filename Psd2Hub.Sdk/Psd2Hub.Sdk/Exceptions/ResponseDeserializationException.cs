@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Psd2Hub.Sdk.Exceptions
 {
@@ -9,8 +8,8 @@ namespace Psd2Hub.Sdk.Exceptions
     {
         private readonly Dictionary<string, object> _data;
       
-        public ResponseDeserializationException(string responseContent, Type destinationType) 
-            : base($"Could not deserialize response into '{destinationType}' type.")
+        public ResponseDeserializationException(string responseContent, Type destinationType, Exception inner) 
+            : base($"Could not deserialize response into '{destinationType}' type.", inner)
         {
             _data = new Dictionary<string, object>
             {
