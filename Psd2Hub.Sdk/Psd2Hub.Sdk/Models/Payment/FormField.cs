@@ -4,10 +4,6 @@ namespace Psd2Hub.Sdk.Models.Payment
 {
     public class FormField
     {
-        public FormField()
-        {
-        }
-
         internal FormField(ApiModels.Payment.FormField apiModel)
         {
             Choices = apiModel.Choices;
@@ -16,9 +12,9 @@ namespace Psd2Hub.Sdk.Models.Payment
             Type = apiModel.Type;
         }
 
-        public Dictionary<string, string> Choices { get; set; }
-        public string Label { get; set; }
-        public bool Required { get; set; }
-        public string Type { get; set; }
+        public Dictionary<string, string> Choices { get; }
+        public string Label { get; }
+        public bool Required { get; }
+        public string Type { get; }
     }
 }
