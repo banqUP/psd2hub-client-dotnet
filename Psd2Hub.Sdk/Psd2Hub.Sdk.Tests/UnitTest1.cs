@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -6,24 +7,33 @@ namespace Psd2Hub.Sdk.Tests
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public async Task Test1()
+        public async Task RetrievePaymentScaUrl()
         {
-            //ljkhiokh
-            var api = new ApiClient("", "");
+            var api = new ApiClient("http://23.97.141.64", "12323");
+            var bank = (await api.GetBanks()).FirstOrDefault();
+            var form = (await bank.GetPaymentForms()).FirstOrDefault();
 
-            var banks = await api.GetBanks();
-            var paymentForm = (await banks.First().GetPaymentForms()).First();
+            var fields = new Dictionary<string, object>
+            {
+                ["amount"] = 40,
+                ["currency"] = "PLN",
+                ["recipientName"] = "Unicef",
+                ["recipientAddress"] = "Adres",
+                ["recipientType"] = "typ",
+                ["recipientIban"] = "PL03102055610000370200128306",
+                ["recipientBankSwift"] = "BPKOPLPW",
+                ["senderName"] = "Jan Kowalski",
+                ["senderIban"] = "PL61000123450000000009040575",
+                ["title"] = "Darowizna",
+                ["startDate"] = "2019-11-29",
+                ["periodType"] = "Month",
+                ["periodValue"] = 1
+            };
 
-            var result = await paymentForm.SubmitPayment(paymentForm.Fields.ToDictionary(f => f.Key, f => (object)"123"));
+            var result = await form.SubmitPayment(fields);
 
-            var scaUrl = result.Links.Sca;
-            //var status = await result.GetPaymentStatus();
+            Assert.IsNotNull(result?.ScaUrl);
         }
     }
 }
