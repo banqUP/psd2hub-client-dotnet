@@ -25,8 +25,8 @@ var form = formList.Single(f => f.PaymentType == PaymentType.Domestic);
 var filledFields = new Dictionary<string, object>();
 foreach (var field in form.Fields)
 {
-	Console.Write($"Input value for {field.Label}: ");
-	filledFields[field.Key] = Console.ReadLine();
+  Console.Write($"Input value for {field.Label}: ");
+  filledFields[field.Key] = Console.ReadLine();
 }
 
 // Submit payment and receive an url for SCA
