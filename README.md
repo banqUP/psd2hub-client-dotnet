@@ -33,5 +33,5 @@ foreach (var field in form.Fields)
 var submission = await form.SubmitPayment(filledFields);
 
 Console.WriteLine($"Follow the link to authenticate and confirm the payment:");
-Console.WriteLine(submission.Links.Sca);
+Console.WriteLine(submission.ScaUrl);
 ```
